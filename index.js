@@ -95,7 +95,7 @@ canvas.addEventListener('touchmove', (e) => {
 function drawText() {
   ctx.fillStyle = '#ffffff';
   ctx.font = '24px Arial';
-  ctx.fillText('Left click and hold', canvas.width / 2 - 100, canvas.height / 2);
+  ctx.fillText('Click and hold', canvas.width / 2 - 100, canvas.height / 2);
 }
 
 function handleParticles() {
