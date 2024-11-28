@@ -1,8 +1,13 @@
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 let particles = [];
 let mouse = { x: null, y: null };
@@ -73,6 +78,18 @@ canvas.addEventListener('mousemove', (e) => {
   const rect = canvas.getBoundingClientRect();
   mouse.x = e.clientX - rect.left;
   mouse.y = e.clientY - rect.top;
+  if (isMouseHeld) {
+    createParticle();
+  }
+});
+
+canvas.addEventListener('touchmove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.touches[0].clientX - rect.left;
+  mouse.y = e.touches[0].clientY - rect.top;
+  if (isMouseHeld) {
+    createParticle();
+  }
 });
 
 function drawText() {
